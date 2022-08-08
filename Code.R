@@ -27,3 +27,6 @@ index(infl) <- lubridate::floor_date(ymd(index(infl)), 'month')
 ### Merge data
 macro <- merge(m2, infl, fill = NA)
 
+### Interpolate NAs values in xts
+macro <- na.approx(macro)
+
