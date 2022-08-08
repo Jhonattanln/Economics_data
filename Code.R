@@ -3,6 +3,7 @@ library(dplyr)
 library(RMySQL)
 library(xts)
 library(lubridate)
+library(zoo)
 
 ### Creating connction
 con <- dbConnect(RMySQL::MySQL(),
@@ -24,5 +25,5 @@ infl <- xts(infl)
 index(infl) <- lubridate::floor_date(ymd(index(infl)), 'month')
 
 ### Merge data
-macro <- merge(m2, infl, join = 'left', fill = NA)
+macro <- merge(m2, infl, fill = NA)
 
