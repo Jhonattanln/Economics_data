@@ -30,3 +30,6 @@ macro <- merge(m2, infl, fill = NA)
 ### Interpolate NAs values in xts
 macro <- na.approx(macro)
 
+### Calc the mean of quarte
+ep <- endpoints(macro, on = 'quarters') 
+macro_mean_quarter <- period.apply(macro, INDEX = ep, FUN = mean)
